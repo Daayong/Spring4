@@ -36,7 +36,7 @@
 	   </c:forEach>
 	  </tbody>
 	</table>
-	 <a href="./insert" class="btn btn-danger">ADD</a>
+	 <a href="./insert" class="btn btn-secondary">ADD</a>
 </div>	
 	
 	
