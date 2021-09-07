@@ -24,5 +24,6 @@ public interface BoardDAO {
 	//글수정 
 	public abstract int setUpdate(BoardDTO boardDTO) throws Exception;
 	
-	
+	//조회수 업데이트 
+	public abstract int setHitsUpdate(BoardDTO boardDTO) throws Exception;
 }
