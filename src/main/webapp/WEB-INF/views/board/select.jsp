@@ -22,6 +22,12 @@
 	
 	<a href="./delete?num=${dto.num}">DELETE</a>
 	<a href="./update?num=${dto.num}">UPDATE</a>
+	
+	<c:if test="${board ne 'notice'}">
+		<a href="./reply?num=${dto.num}">Reply</a>
+	</c:if>
+	
+	
 	</div>
 	
 	

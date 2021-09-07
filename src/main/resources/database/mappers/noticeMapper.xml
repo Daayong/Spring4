@@ -5,21 +5,11 @@
   
   <mapper namespace="com.iu.s4.board.notice.NoticeDAO">
 
-	<select id="getCount" resultType="java.lang.Long" parameterType="Pager">
+	<select id="getCount" resultType="Long" parameterType="Pager">
 		SELECT COUNT(NUM) FROM NOTICE
-		WHERE
-			<choose>
-				<when test="kind=='num'">
-					num
-				</when>
-				<when test="kind=='title'">
-					title
-				</when>
-				<otherwise>
-					writer
-				</otherwise>
-			</choose>
-		LIKE '%' || #{search} || '%'
+			<if test="kind=='k1'">WHERE title LIKE '%' || #{search} || '%'</if>
+			<if test="kind=='k2'">WHERE contente LIKE '%' || #{search} || '%'</if>
+			<if test="kind=='k3'">WHERE writer LIKE '%' || #{search} || '%'</if>
 	</select>
 
 	<select id="getList" resultType="NoticeDTO" parameterType="Pager">
@@ -29,10 +19,10 @@
 		FROM NOTICE
 		WHERE
 		<choose>
-				<when test="kind=='num'">
+				<when test="kind=='k1'">
 					num
 				</when>
-				<when test="kind=='title'">
+				<when test="kind=='k2'">
 					title
 				</when>
 				<otherwise>

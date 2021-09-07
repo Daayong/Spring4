@@ -18,9 +18,9 @@
 	<form class="col-lg-7" action="./list" method="get">
 	<div class="input-group mb-3">
 	  <select name="kind" class="form-select form-select-sm" aria-label=".form-select-sm example">
-	  	<option value="num">NUM</option>
-	  	<option value="title">TITLE</option>
-	  	<option value="writer">WRITER</option>
+	  	<option value="k1">NUM</option>
+	  	<option value="k2">TITLE</option>
+	  	<option value="k3">WRITER</option>
 	  </select>
 	  
 	  <input type="text" name="search" class="form-control" aria-label="Text input with dropdown button">
@@ -43,7 +43,14 @@
 	  	<c:forEach items="${list}" var="dto">
 		    <tr>
 		      <th scope="row">${dto.num}</th>
-		      <td><a href="./select?num=${dto.num}">${dto.title}</a></td>
+		      <td><a href="./select?num=${dto.num}">
+		      	
+		      	<c:catch>
+			      	<c:forEach begin="1" end="${dto.depth}">
+			      		--   <!-- 들여쓰기 아이콘 대신 사용하는 기호 -->
+			      	</c:forEach>
+		      	</c:catch>
+		      ${dto.title}</a></td>
 		      <td>${dto.writer}</td>
 		      <td>${dto.regDate}</td>
 		      <td>${dto.hits}</td>

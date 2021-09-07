@@ -10,12 +10,13 @@
 </head>
 <body>
 <c:import url="../temp/boot_nav.jsp"></c:import>
-	<h1>${board}Insert Page</h1>
+	<h1>${board} Reply Page</h1>
 
 
 <div class="container-fluid">
 	
-		<form class="col-md-6 mx-auto" action="./insert" method="post" >
+		<form class="col-md-6 mx-auto" action="./reply" method="post" >
+			<input type="hidden" name="num" value="${param.num}">
 		  <div class="mb-3">
 		    <label for="title" class="form-label">TITLE</label>
 		    <input type="text" class="form-control" name="title" id="title" placeholder="Enter Title">
@@ -31,7 +32,7 @@
 		    <textarea class="form-control" name="contents" id="exampleFormControlTextarea1" rows="6" placeholder="Enter Contents"></textarea>
 		  </div>
 		 
-		  <button type="submit" class="btn btn-primary">ADD</button>
+		  <button type="submit" class="btn btn-primary">Reply</button>
 		</form>
 	
 </div>

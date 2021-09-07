@@ -1,36 +1,43 @@
 package com.iu.s4.util;
 
 public class Pager {
-
+	//파라미터 처리 
 	private Long pn; 
+	//한페이지에 출력할 갯수(글의 갯수)
 	private Long perPage; 
+	
 	private Long startRow; 
+	
 	private Long lastRow; 
+	
 	private Long startNum; 
+	
 	private Long lastNum; 
+	
 	private Long totalPage; 
+	//한페이지에 출력할 pn의 갯수(페이지 버튼) 
+	private Long perBlock; 
 	
 	private String kind; 
 	private String search;
 	
-	
+	//-- rownum 계산 
 	public void makeRow() {
 		this.startRow=(this.getPn()-1)*this.getPerPage()+1;
 		this.lastRow=this.getPn()*this.getPerPage();
 	}
-	
+	//startNUm lastNum jsp번호 출력 
 	public void makeNum(Long totalCount) {
-		//totalPage 구하기 
-		//Long totalCount=212L;
-		
+		//1. totalCount : 전체 글의 갯수 
+		//2. totalCount로 totalPage 계산 : 전체 페이지 갯수 
 		totalPage=totalCount/this.getPerPage();
 		if(totalCount%this.getPerPage() != 0) {
 			totalPage++;
 		}
 		
-		//totalBlock 구하기 
-		Long totalBlock=totalPage/5;
-		if(totalPage%5 != 0) {
+		//totalpage로 totalBlock 구하기 
+		Long totalBlock=totalPage/this.getPerBlock();
+		if(totalPage%this.getPerBlock() != 0) {
 			totalBlock++;
 		}
 		//totalPage이상 넘어가지 않게 제한해주기
@@ -38,15 +45,15 @@ public class Pager {
 			this.setPn(totalPage);
 		}
 		
-		//pn으로 curBlock 구하기
-		Long curBlock=this.getPn()/5;
-		if(this.getPn()%5 !=0) {
+		//pn으로 curBlock(현재 블럭번호) 구하기
+		Long curBlock=this.getPn()/this.getPerBlock();
+		if(this.getPn()%this.getPerBlock() !=0) {
 			curBlock++;
 		}
 		
 		//curBlock으로 시작번호와 마지막 번호 구하기 
-		this.startNum=(curBlock-1)*5+1;
-		this.lastNum=curBlock*5;
+		this.startNum=(curBlock-1)*this.getPerBlock()+1;
+		this.lastNum=curBlock*this.getPerBlock();
 		
 		if(curBlock==totalBlock) {
 			this.lastNum=totalPage;
@@ -55,9 +62,9 @@ public class Pager {
 	}
 	
 	public Long getPn() {
-		if(this.pn==null || this.pn<0) {
+		if(this.pn==null || this.pn<1) {
 			this.pn=1L;
-			
+			//pn은 Long 타입으로, 레퍼런스 타입임. 레퍼런스타입은 기본값이 Null값이 들어간다. 
 			// pn 파라미터 값에 음수 혹은 null 값이 들어가면 에러가 나거나 이상한 페이지가 나올수 있으니
 			// 그런경우에는 무조건 1번 페이지로 갈것 
 		}
@@ -69,8 +76,9 @@ public class Pager {
 	}
 	public Long getPerPage() {
 		//다시 잘 이해해보기
-		if(this.perPage==null || this.perPage==0) {
+		if(this.perPage==null || this.perPage<1) {
 			this.perPage=10L;
+			//getPn과 같은 이유로 null 혹은 1보다 작을 경우를 처리해주기 
 		}
 		return perPage;
 	}
@@ -124,5 +132,16 @@ public class Pager {
 	public void setSearch(String search) {
 		this.search = search;
 	} 
+	
+	public Long getPerBlock() {
+		this.perBlock=5L;
+		
+		return perBlock;
+	}
+
+	public void setPerBlock(Long perBlock) {
+		this.perBlock = perBlock;
+	}
+	
 	
 }

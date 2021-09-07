@@ -37,27 +37,35 @@ public class NoticeController {
 	
 		List<BoardDTO> ar = noticeService.getList(pager);
 		mv.addObject("list", ar);
+		mv.addObject("pager", pager);
 		mv.setViewName("board/list");
 		
 		return mv;	
 	}
 	
-	@RequestMapping("select")
-	public void getSelect(BoardDTO boardDTO, Model model) throws Exception {
-		
+	@GetMapping("select")
+	public ModelAndView getSelect(BoardDTO boardDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
 		boardDTO=noticeService.getSelect(boardDTO);
-		model.addAttribute("dto", boardDTO);
+		mv.addObject("dto", boardDTO);
+		mv.setViewName("board/select");
+		return mv; 
 	}
 	
 	@GetMapping("insert")
-	public void setInsert() {
-		
+	public ModelAndView setInsert() throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("board/insert");
+		return mv;
 	}
 	
 	@PostMapping("insert")
-	public String setInsert(BoardDTO boardDTO) throws Exception {
+	public ModelAndView setInsert(BoardDTO boardDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
 		int result=noticeService.setInsert(boardDTO);
-		return "redirect:./list";
+		mv.setViewName("redirect:./list");
+		return mv;
 	}
 	
 	@RequestMapping("delete")
