@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.iu.s4.board.BoardDTO;
 import com.iu.s4.board.BoardService;
+import com.iu.s4.util.Pager;
 
 
 @Service
@@ -17,9 +18,9 @@ public class QnaService implements BoardService {
 	
 	
 	@Override
-	public List<BoardDTO> getList() throws Exception {
+	public List<BoardDTO> getList(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
-		return qnaDAO.getList();
+		return qnaDAO.getList(pager);
 	}
 
 	@Override
