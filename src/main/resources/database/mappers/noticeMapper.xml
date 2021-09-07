@@ -5,7 +5,7 @@
   
   <mapper namespace="com.iu.s4.board.notice.NoticeDAO">
 
-	<select id="getCount" resultType="BoardDTO">
+	<select id="getCount" resultType="java.lang.Long" parameterType="Pager">
 		SELECT COUNT(NUM) FROM NOTICE
 		WHERE
 			<choose>
@@ -22,7 +22,7 @@
 		LIKE '%' || #{search} || '%'
 	</select>
 
-	<select id="getList" resultType="NoticeDTO" parameterType="BoardDTO">
+	<select id="getList" resultType="NoticeDTO" parameterType="Pager">
 		SELECT * FROM
 		(SELECT ROWNUM R, BK.* FROM
 		(SELECT*
