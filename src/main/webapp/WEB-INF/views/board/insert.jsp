@@ -15,26 +15,32 @@
 
 <div class="container-fluid">
 	
-		<form class="col-md-6 mx-auto" action="./insert" method="post" >
+		<form id="frm" class="col-md-6 mx-auto" action="./insert" method="post" >
 		  <div class="mb-3">
 		    <label for="title" class="form-label">TITLE</label>
 		    <input type="text" class="form-control" name="title" id="title" placeholder="Enter Title">
+		  	<div style="color:red;" id="warning"></div>
 		  </div>
 		  
 		  <div class="mb-3">
 		    <label for="writer" class="form-label">Writer</label>
 		    <input type="text" class="form-control" name="writer" id="writer" placeholder="Enter Writer">
+		  	<div style="color:red;" id="warning2"></div>
 		  </div>
 		  
 		  <div class="mb-3">
-		    <label for="exampleFormControlTextarea1" class="form-label">CONTENTS</label>
-		    <textarea class="form-control" name="contents" id="exampleFormControlTextarea1" rows="6" placeholder="Enter Contents"></textarea>
+		   <label for="exampleFormControlTextarea1" class="form-label">Contents</label>
+  			<textarea class="form-control" cols=""  name="contents" id="exampleFormControlTextarea1" rows="6"></textarea>
 		  </div>
-		 
-		  <button type="submit" class="btn btn-primary">ADD</button>
+		 	
+		  <button id="b1" type="button" class="btn btn-primary">ADD</button>
 		</form>
 	
 </div>
+
+
+<script type="text/javascript" src="../resources/js/boardCheck.js"></script>
+
 
 </body>
 </html>
