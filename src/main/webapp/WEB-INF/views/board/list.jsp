@@ -11,24 +11,27 @@
 <body>
 	<c:import url="../temp/boot_nav.jsp"></c:import>
 	
-	<h1>${board}List Page</h1>
-	
+	<h1>List Page</h1>
+
 <div class="col-md-7 my-2 mx-auto">	
-	
-	<form class="col-lg-7" action="./list" method="get">
-	<div class="input-group mb-3">
-	  <select name="kind" class="form-select form-select-sm" aria-label=".form-select-sm example">
-	  	<option value="k1">NUM</option>
-	  	<option value="k2">TITLE</option>
-	  	<option value="k3">WRITER</option>
-	  </select>
-	  
-	  <input type="text" name="search" class="form-control" aria-label="Text input with dropdown button">
-	<button type="submit" class="btn btn-outline-secondary">Search</button>	
-	</div>
-	</form>
-	
-	
+		<!-- search Form Start-->
+		<form action="./list" method="get">
+		
+		 <div class="input-group mb-3" >
+		  <select name="kind" class="form-select form-select-sm" aria-label=".form-select-sm example">
+			  <option value="k1">Title</option>
+			  <option value="k2">Contents</option>
+			  <option value="k3">Writer</option>
+		  </select>
+		  
+		  <input type="text" name="search" class="form-control" aria-label="Text input with dropdown button">
+		  <button type="submit" class="btn btn-outline-secondary">Search</button>
+		</div>
+			
+		</form>
+
+
+
 	<table class="table">
 	  <thead>
 	    <tr>
@@ -40,18 +43,19 @@
 	    </tr>
 	  </thead>
 	  <tbody>
-	  	<c:forEach items="${list}" var="dto">
+	  	<c:forEach items="${list}" var="dto" varStatus="i">
 		    <tr>
 		      <th scope="row">${dto.num}</th>
-		      <td><a href="./select?num=${dto.num}">
-		      	
-		      	<c:catch>
-			      	<c:forEach begin="1" end="${dto.depth}">
-			      		--   <!-- 들여쓰기 아이콘 대신 사용하는 기호 -->
-			      	</c:forEach>
-		      	</c:catch>
-		      ${dto.title}</a></td>
-		      <td>${dto.writer}</td>
+		      <td><span class="c1" data-writer-num="${i.index}" >
+		      
+		      <c:catch>
+			      <c:forEach begin="1" end="${dto.depth}">
+			      	--
+			      </c:forEach>
+		      </c:catch>
+		      
+		      ${dto.title}</span></td>
+		      <td id="w${i.index}">${dto.writer}</td>
 		      <td>${dto.regDate}</td>
 		      <td>${dto.hits}</td>
 		    </tr>
@@ -59,7 +63,7 @@
 	  </tbody>
 	</table>
 	
-		<!-- Pageing -->
+<!-- Pageing -->
 		<nav aria-label="Page navigation example">
 		  <ul class="pagination">
 		    <li class="page-item">
@@ -91,13 +95,12 @@
 		    </li>
 		  </ul>
 		</nav>
-		
+	
 	
 	 <a href="./insert" class="btn btn-secondary">ADD</a>
-	
-
+	 <button id="btn">CLICK</button>
 </div>	
 	
-	
+<script type="text/javascript" src="../resources/js/list.js"></script>	
 </body>
 </html>
