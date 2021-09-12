@@ -39,7 +39,7 @@ for(let ch of cn){
 
 	btn.addEventListener('click',function(){
 		let result="true";
-		for(che of pill){
+		for(let che of pill){
 			if(!che.checked){
 				result=false;
 				break;
