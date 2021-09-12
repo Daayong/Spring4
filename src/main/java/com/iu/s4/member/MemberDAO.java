@@ -21,7 +21,21 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE+"getLogin", memberDTO);
 	}
 	
+	public int setDelete(MemberDTO memberDTO)throws Exception{
+		return sqlSession.delete(NAMESPACE+"setDelete", memberDTO);
+	}
 	
+	public int setUpdate(MemberDTO memberDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setUpdate", memberDTO);
+	}
+	
+	public int setInsert(MemberDTO memberDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setInsert", memberDTO);
+	}
+	
+	public MemberDTO getSelect(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getSelect", memberDTO);
+	}
 	
 	
 }

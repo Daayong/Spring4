@@ -18,11 +18,8 @@
   
   <div class="mb-3">
     <label for="text" class="form-label">ID</label>
-    <input type="text" class="form-control put" id="iden" name="id">
-    <button id="idCheck" type="button">ID 중복확인</button>
-    <div id="idResult" style="color:red;"></div>
-  <!--   <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
-  </div>
+    <input readonly="readonly" class="form-control put" id="iden" name="id" placeholder="${member.id}">
+   </div>
   
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Password</label>
@@ -37,27 +34,25 @@
   
   <div class="mb-3">
     <label for="text" class="form-label">Name</label>
-    <input type="text" class="form-control put" id="name" name="name">
+    <input type="text" class="form-control put" id="name" name="name" placeholder="${member.name}">
   </div>
   
   <div class="mb-3">
     <label for="text" class="form-label">Phone</label>
     <input type="tel" class="form-control put" id="phone" name="phone" placeholder="01012345678">
-  <!--   <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
   </div>
   
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email</label>
-    <input type="email" class="form-control put" id="email" name="email" aria-describedby="emailHelp" placeholder="email@email.com">
-  <!--   <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+    <input type="email" class="form-control put" name="email" id="email" aria-describedby="emailHelp" placeholder="email@email.com">
   </div>
   
   
-  <button id="btn" type="button" class="btn btn-primary">Submit</button>
+<a href="login" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">UPDATE</a>
 </form>
 	
 
-<script type="text/javascript" src="../resources/js/join.js"></script>
-
+<!-- <script type="text/javascript" src="../resources/js/join.js"></script>
+ -->
 </body>
 </html>

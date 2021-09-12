@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import oracle.jdbc.proxy.annotation.Post;
+
 @Controller
 @RequestMapping("/member/**")
 public class MemberController {
@@ -30,6 +32,14 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("member/join");
 		return mv;
+	}
+	
+	@PostMapping("join")
+	public ModelAndView setInsert(MemberDTO memberDTO)throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result = memberService.setInsert(memberDTO);
+		mv.setViewName("redirect:../");
+		return mv; 
 	}
 	
 	@GetMapping("idCheck")
@@ -82,6 +92,33 @@ public class MemberController {
 		mv.setViewName("member/mypage");
 		return mv; 
 	}
+	
+	@RequestMapping("delete")
+	public String setDelete(MemberDTO memberDTO)throws Exception {
+		int result=memberService.setDelete(memberDTO);
+		return "redirect:../"; 
+	}
+	
+
+	
+	
+	@GetMapping("update")
+	public ModelAndView setUpdate(MemberDTO memberDTO)throws Exception {
+		ModelAndView mv = new ModelAndView();
+		memberDTO = memberService.getSelect(memberDTO);
+		mv.addObject("dto",memberDTO);
+		mv.setViewName("member/update");
+		return mv; 
+	}
+	
+	@PostMapping("update")
+	public ModelAndView setUpdate(MemberDTO memberDTO,ModelAndView mv)throws Exception{
+		int result = memberService.setUpdate(memberDTO);
+		mv.setViewName("redirect:../");
+		return mv; 
+	}
+	
+	
 	
 	
 	
