@@ -29,8 +29,9 @@ public class MemberDAO {
 		return sqlSession.update(NAMESPACE+"setUpdate", memberDTO);
 	}
 	
-	public int setInsert(MemberDTO memberDTO)throws Exception{
-		return sqlSession.insert(NAMESPACE+"setInsert", memberDTO);
+	//insert랑 같은거
+	public int setJoin(MemberDTO memberDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setJoin", memberDTO);
 	}
 	
 	public MemberDTO getSelect(MemberDTO memberDTO)throws Exception{

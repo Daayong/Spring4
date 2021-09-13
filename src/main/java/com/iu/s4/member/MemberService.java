@@ -24,8 +24,8 @@ public class MemberService {
 		return memberDAO.setUpdate(memberDTO);
 	}
 	
-	public int setInsert(MemberDTO memberDTO)throws Exception{
-		return memberDAO.setInsert(memberDTO);
+	public int setJoin(MemberDTO memberDTO)throws Exception{
+		return memberDAO.setJoin(memberDTO);
 	}
 	
 	public MemberDTO getSelect(MemberDTO memberDTO)throws Exception{

@@ -38,12 +38,25 @@
   
   
   <a href="./update?id=${dto.id}" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">UPDATE</a>
-  <a href="./delete?id=${dto.id}" class="btn btn-danger btn-lg" tabindex="-1" role="button" aria-disabled="true">DELETE</a>
+  <a href="#" id="del" class="btn btn-danger btn-lg" tabindex="-1" role="button" aria-disabled="true">DELETE</a>
   
 </form>
 	
 
-<script type="text/javascript" src="../resources/js/mypage.js"></script>
+<script type="text/javascript">
+
+/* const del = document.getElementById("del");
+ */
+ const del=document.querySelector("#del");
+del.addEventListener('click',function(){
+	let result=window.confirm('Really Delete?');
+	
+	if(result){
+		location.href="./delete";
+	}
+	
+});
+</script>
 
 </body>
 </html>

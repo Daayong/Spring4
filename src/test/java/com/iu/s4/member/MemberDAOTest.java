@@ -28,7 +28,7 @@ public class MemberDAOTest extends MyJunitTest {
 		memberDTO.setPhone("0105555");
 		memberDTO.setEmail("5555467@hanmail.net");
 		
-		int result=memberDAO.setInsert(memberDTO);
+		int result=memberDAO.setJoin(memberDTO);
 		
 	}
 	

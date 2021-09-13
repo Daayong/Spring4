@@ -31,7 +31,7 @@
 
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Password 확인</label>
-    <input type="password" class="form-control put pw" id="pw2" placeholder="password를 한번더 입력하세요">
+    <input type="password" class="form-control put pw" id="pw2" name="pwCheck" placeholder="password를 한번더 입력하세요">
   	<div id="warnPw" style="color:red;"></div>
   </div>
   
