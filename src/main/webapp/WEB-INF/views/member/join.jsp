@@ -1,32 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<c:import url="../temp/boot_head.jsp"></c:import>
 <title>Insert title here</title>
+<c:import url="../temp/boot_head.jsp"></c:import>
+
 </head>
 <body>
 <c:import url="../temp/boot_nav.jsp"></c:import>
-
-	<h1>Join page</h1>
-	
-	
-<form id="frm" action="join" method="post" style="width:300px; height:100%; margin: 0 auto; ">
+	<h1 class="col-md-6 mx-auto my-5">Join Page</h1>
+	<form id="frm" action="join" method="post"  class="col-md-6 mx-auto" >
   
   <div class="mb-3">
     <label for="text" class="form-label">ID</label>
-    <input type="text" class="form-control put" id="iden" name="id">
-    <button id="idCheck" type="button">ID 중복확인</button>
-    <div id="idResult" style="color:red;"></div>
-  <!--   <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+    <input type="text" class="form-control put" id="id" name="id"> 
+    <button type="button" id="idCheck">ID중복확인</button>
+	<div id="idResult"></div>    
   </div>
   
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control put pw" name="pw" id="pw1">
+    <input type="password" class="form-control put pw" id="pw1" name="pw">
   </div>
 
   <div class="mb-3">
@@ -38,6 +35,7 @@
   <div class="mb-3">
     <label for="text" class="form-label">Name</label>
     <input type="text" class="form-control put" id="name" name="name">
+  <!--   <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
   </div>
   
   <div class="mb-3">
@@ -52,12 +50,30 @@
   <!--   <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
   </div>
   
+   <div class="mb-3 my-4" id="files">
+    <label class="form-label"></label>
+  	<button id="add" type="button" class="btn btn-info">File Add</button>
+  	
+  </div>
   
-  <button id="btn" type="button" class="btn btn-primary">Submit</button>
+  <!-- input file 추가 영역 -->
+  <div id="addResult">
+  	
+  </div>
+  
+  
+  
+   <div class="mb-3 my-4">
+    <label class="form-label"></label>
+  	<button id="btn" type="button" class="btn btn-primary">Join</button>
+  </div>
+  
 </form>
-	
-
+  <div class="mb-3" id="f">
+    <label for="photo" class="form-label">Photo</label>
+    <input type="file" class="form-control put" id="photo" name="photo" aria-describedby="emailHelp">
+  </div>
 <script type="text/javascript" src="../resources/js/join.js"></script>
-
+<script type="text/javascript" src="../resources/js/file.js"></script>
 </body>
 </html>

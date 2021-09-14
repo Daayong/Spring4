@@ -54,7 +54,7 @@
 <button id="btn">회원가입</button>
 
 
-<script type="text/javascript" src="../resources/js/check.js"></script>
+<script type="text/javascript" src="../resources/js/checkQuery.js"></script>
 
 </body>
 </html>

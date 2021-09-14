@@ -31,10 +31,24 @@
 		    <textarea class="form-control" name="contents" id="exampleFormControlTextarea1" rows="6" placeholder="Enter Contents"></textarea>
 		  </div>
 		 
+		 <!-- button 추가 -->
+		
+		
+		<button id="fileAdd" type="button" class="btn btn-info">File Add</button>
+		
+		<button type="button" class="del">Delete</button>
+		
+		 <div id="fileAddResult">
+		 
+		 </div>
+		 
+		 
 		  <button type="submit" class="btn btn-primary">ADD</button>
 		</form>
 	
 </div>
+
+<script type="text/javascript" src="../resources/js/boardFile.js"></script>
 
 </body>
 </html>
