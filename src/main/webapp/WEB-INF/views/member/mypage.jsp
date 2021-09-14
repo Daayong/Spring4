@@ -36,6 +36,13 @@
     <input readonly="readonly" class="form-control put" id="email" name="email" aria-describedby="emailHelp" placeholder="${member.email}">
   </div>
   
+  <div>
+  	<img src="../resources/upload/member/${files.fileName}"> 
+  
+  </div>
+  
+  
+  
   
   <a href="./update?id=${dto.id}" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">UPDATE</a>
   <a href="#" id="del" class="btn btn-danger btn-lg" tabindex="-1" role="button" aria-disabled="true">DELETE</a>
