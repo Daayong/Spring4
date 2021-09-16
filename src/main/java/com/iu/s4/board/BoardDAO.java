@@ -24,5 +24,8 @@ public interface BoardDAO {
 	//글수정 
 	public abstract int setUpdate(BoardDTO boardDTO) throws Exception;
 	
+	public int setHitUpdate(BoardDTO boardDTO) throws Exception;
 	
+	//file
+	public int setFile(BoardFilesDTO boardFilesDTO)throws Exception;
 }

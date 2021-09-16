@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.iu.s4.board.BoardDAO;
 import com.iu.s4.board.BoardDTO;
+import com.iu.s4.board.BoardFilesDTO;
 import com.iu.s4.util.Pager;
 
 @Repository
@@ -16,6 +17,21 @@ public class QnaDAO implements BoardDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.iu.s4.board.qna.QnaDAO.";
 
+	@Override
+	public int setFile(BoardFilesDTO boardFilesDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.insert(NAMESPACE+"setFile", boardFilesDTO);
+	}
+	
+	
+	@Override
+	public int setHitUpdate(BoardDTO boardDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.update(NAMESPACE+"setHitUpdate", boardDTO);
+	}
+	
+	
+	
 	@Override
 	public Long getCount(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
@@ -54,7 +70,6 @@ public class QnaDAO implements BoardDAO {
 	
 	public int setReplyUpdate(QnaDTO qnaDTO) throws Exception{
 		return sqlSession.update(NAMESPACE+"setReplyUpdate", qnaDTO);
-		
 	}
 	
 	//답글

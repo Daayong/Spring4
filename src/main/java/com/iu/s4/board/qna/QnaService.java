@@ -1,12 +1,18 @@
 package com.iu.s4.board.qna;
 
+import java.io.File;
 import java.util.List;
+
+import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.s4.board.BoardDTO;
+import com.iu.s4.board.BoardFilesDTO;
 import com.iu.s4.board.BoardService;
+import com.iu.s4.util.FileManager;
 import com.iu.s4.util.Pager;
 @Service
 public class QnaService implements BoardService {
@@ -14,6 +20,12 @@ public class QnaService implements BoardService {
 	@Autowired
 	private QnaDAO qnaDAO;
 
+	@Autowired
+	private ServletContext servletContext;
+	
+	@Autowired
+	private FileManager fileManager;
+	
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
 		Long totalCount = qnaDAO.getCount(pager);
@@ -27,13 +39,39 @@ public class QnaService implements BoardService {
 		// TODO Auto-generated method stub
 		return qnaDAO.getSelect(boardDTO);
 	}
-
+	
 	@Override
-	public int setInsert(BoardDTO boardDTO) throws Exception {
+	public int setInsert(BoardDTO boardDTO,MultipartFile [] files) throws Exception {
 		// TODO Auto-generated method stub
-		return qnaDAO.setInsert(boardDTO);
+		//1.어느 폴더 
+			String realPath = servletContext.getRealPath("/resources/upload/qna");
+			System.out.println(realPath);
+		
+			File file = new File(realPath); 
+			
+			System.out.println("Before Num:"+boardDTO.getNum());
+			
+			int result = qnaDAO.setInsert(boardDTO);
+			
+			System.out.println("after Num:" + boardDTO.getNum());
+			//max()
+			
+			for(MultipartFile multipartFile : files) {
+			String fileName=fileManager.fileSave(multipartFile, file);
+			System.out.println(fileName);
+			BoardFilesDTO boardFilesDTO = new BoardFilesDTO();
+			boardFilesDTO.setFileName(fileName);
+			boardFilesDTO.setOriName(multipartFile.getOriginalFilename());
+			boardFilesDTO.setNum(boardDTO.getNum());
+			result=qnaDAO.setFile(boardFilesDTO);
+			}
+		return result; //noticeDAO.setInsert(boardDTO);
 	}
 
+	
+	
+	
+	
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub

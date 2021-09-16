@@ -11,7 +11,7 @@
 		<typeAlias type="java.lang.Long" alias="Long"/>
 		<typeAlias type="com.iu.s4.util.Pager" alias="Pager"/>
 		<typeAlias type="com.iu.s4.member.MemberFilesDTO" alias="MemberFilesDTO"/>
-		
+		<typeAlias type="com.iu.s4.board.BoardFilesDTO" alias="BoardFilesDTO"/>
 		<typeAlias type="com.iu.s4.member.MemberDTO" alias="MemberDTO"/>
 	</typeAliases>
 
