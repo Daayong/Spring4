@@ -37,7 +37,7 @@
   </div>
   
   <div>
-  	<img src="../resources/upload/member/${files.fileName}"> 
+  	<img src="../resources/upload/member/${member.memberFilesDTO.fileName}"> 
   
   </div>
   

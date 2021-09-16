@@ -50,8 +50,8 @@ public class NoticeController {
 		ModelAndView mv = new ModelAndView();
 		boardDTO=noticeService.getSelect(boardDTO);
 		List<BoardFilesDTO> ar=noticeService.getFiles(boardDTO);
-		mv.addObject("fileList", ar)
-;		mv.addObject("dto", boardDTO);
+		//mv.addObject("fileList", ar);
+		mv.addObject("dto", boardDTO);
 		mv.setViewName("board/select");
 		return mv; 
 	}

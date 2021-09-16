@@ -65,7 +65,7 @@ public class MemberController {
 		MemberFilesDTO memberFilesDTO=memberService.getFile(memberDTO);
 		
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("files", memberFilesDTO);
+		//mv.addObject("files", memberFilesDTO);
 		mv.setViewName("member/mypage");
 		return mv;
 	}

@@ -5,6 +5,30 @@
   
   <mapper namespace="com.iu.s4.member.MemberDAO">
   	
+  	<resultMap type="MemberDTO" id="getLoginResult">
+  		<!-- 프라이머리 키  -->
+  		<id column="id" property="id"/>
+  		<result column="pw" property="pw"/>
+  		<result column="name" property="name"/>
+  		<result column="phone" property="phone"/>
+  		<result column="email" property="email"/>
+  		<!--1:1 관계, DTO 내에 다른 DTO 하나가 멤버 변수로 선언  -->
+  		<association property="memberFilesDTO" javaType="MemberFilesDTO">
+  			<id column="num" property="num"/>
+  			<result column="fileName" property="fileName"/>
+  			<result column="oriName" property="oriName"/>
+  		</association>
+  	</resultMap>
+  	
+  	<select id="getLogin" parameterType="MemberDTO" resultMap="getLoginResult">
+		SELECT M.*, MF.*
+		FROM MEMBER M
+		    INNER JOIN
+		    MEMBERFILES MF
+		ON(M.ID = MF.ID)
+		WHERE M.ID=#{id} AND M.PW=#{pw}
+	</select>
+  	
   	<insert id="setFileInsert" parameterType="MemberFilesDTO">
   	 INSERT INTO MEMBERFILES (NUM,ID,FILENAME,ORINAME)
   	 VALUES(files_seq.nextval,#{id},#{fileName},#{oriName})
@@ -16,10 +40,6 @@
   	
 	<select id="getIdCheck" parameterType="MemberDTO" resultType="MemberDTO">
 	   	SELECT ID FROM MEMBER WHERE ID=#{id}
-	</select>
-
-	<select id="getLogin" parameterType="MemberDTO" resultType="MemberDTO">
-		SELECT * FROM MEMBER WHERE ID=#{id} and PW=#{pw}
 	</select>	
 	
 	<insert id="setJoin" parameterType="MemberDTO" >
@@ -37,7 +57,12 @@
 	</delete>
 	
 	<select id="getSelect" parameterType="MemberDTO" resultType="MemberDTO">
-		SELECT * FROM MEMBER WHERE ID=#{id}
+		SELECT M.*, MF.*
+		FROM MEMBER M
+		    LEFT JOIN
+		    MEMBERFILES MF
+		ON(M.ID = MF.ID)
+		WHERE M.ID=#{id}
 	</select>
 	
 	

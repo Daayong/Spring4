@@ -2,6 +2,8 @@ package com.iu.s4.member;
 
 public class MemberDTO {
 	
+	private MemberFilesDTO memberFilesDTO; 
+	
 	private String id;
 	private String pw;
 	private String name; 
@@ -9,6 +11,13 @@ public class MemberDTO {
 	private String email;
 	
 	
+	public MemberFilesDTO getMemberFilesDTO() {
+		return memberFilesDTO;
+	}
+	public void setMemberFilesDTO(MemberFilesDTO memberFilesDTO) {
+		this.memberFilesDTO = memberFilesDTO;
+	}
+
 	public String getId() {
 		return id;
 	}
