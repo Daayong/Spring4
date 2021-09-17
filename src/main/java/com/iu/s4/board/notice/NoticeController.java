@@ -29,8 +29,17 @@ public class NoticeController {
 	public String getBoard() {
 		return "notice";		
 	}
-	//getBoard는 어디에 활용할 것인가....
-
+	
+	@GetMapping("down")
+	public ModelAndView fileDown(BoardFilesDTO boardFilesDTO)throws Exception {
+		ModelAndView mv = new ModelAndView(); 
+		mv.addObject("dto", boardFilesDTO);
+		mv.setViewName("fileDown");
+		return mv; 
+	}
+	
+	
+	
 //	@RequestMapping(value="list", method=RequestMethod.GET)
 	@GetMapping("list")
 	public ModelAndView getList(Pager pager) throws Exception {
