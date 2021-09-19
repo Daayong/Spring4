@@ -29,7 +29,24 @@
 			</div>
 		</c:forEach>	
   
-		
+	<hr>
+	<div>
+	 <div class="mb-3">
+		    <label for="writer" class="form-label">Writer</label>
+		    <input type="text" class="form-control" readonly="readonly" value="${member.id}" name="writer" id="writer" placeholder="Enter Writer">
+		  </div>
+		  
+		  <div class="mb-3">
+		   <label for="exampleFormControlTextarea1" class="form-label">Contents</label>
+  			<textarea class="form-control" cols=""  name="contents" id="contents" rows="6"></textarea>
+		  </div>
+		  
+		 <!-- button 추가 --> 	
+		  <button type="submit" id="comment" class="btn btn-primary">Write</button>
+	
+	</div>
+	<hr>
+	
 	
 	<c:if test="${not empty member and member.id eq dto.writer}">
 		<a href="./delete?num=${dto.num}">DELETE</a>
@@ -43,6 +60,22 @@
 	
 	
 	</div>
+	
+	
+	<script type="text/javascript">
+		$('#comment').click(function(){
+			//작성자, 내용을 콘솔에 출력 
+			let writer = $("#writer").val();
+			let contents = $("#contents").val();
+			console.log(writer,contents);
+			$.post('./comment',{num:'${dto.num}',writer:writer,contents:contents},function(result){
+				console.log(result.trim());
+			});
+		});
+	</script>
+	
+	
+	
 	
 	
 

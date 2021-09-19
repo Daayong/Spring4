@@ -3,7 +3,7 @@
  */
  
  //id
- const iden=document.getElementById("iden");
+ const id=document.getElementById("id");
  const idResult=document.getElementById("idResult");
  const idCheck=document.getElementById("idCheck");
  
@@ -51,6 +51,22 @@ idCheck.addEventListener('click',function(){
 	iden.value="";
 });
 */
+
+	$('#id').blur(function() {
+		let id=$('#id').val();
+		$.get('./idCheckAjax?id='+id, function(data){
+			data=data.trim(); 
+			if(data=='1'){
+				$('#idResult').html('사용가능');				
+			}else{
+				$('#idResult').html('사용 불가능');
+			}
+		
+		
+		});
+	});
+
+
 
 //비어있는 input이 있는지 없는지확인하는 함수 
 function checkEmpty(puts){

@@ -15,7 +15,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.s4.board.BoardDTO;
 import com.iu.s4.board.BoardFilesDTO;
+import com.iu.s4.board.CommentsDTO;
 import com.iu.s4.util.Pager;
+
+import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 @RequestMapping("/notice/**")
@@ -38,6 +41,18 @@ public class NoticeController {
 		return mv; 
 	}
 	
+	//setComment
+	@PostMapping("comment")
+	public ModelAndView setComment(CommentsDTO commentsDTO)throws Exception {
+		commentsDTO.setBoard("N");
+		
+		
+		
+		ModelAndView mv = new ModelAndView();
+		
+		
+		return mv;
+	}
 	
 	
 //	@RequestMapping(value="list", method=RequestMethod.GET)
