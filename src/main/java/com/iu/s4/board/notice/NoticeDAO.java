@@ -1,6 +1,7 @@
 package com.iu.s4.board.notice;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.iu.s4.board.BoardDAO;
 import com.iu.s4.board.BoardDTO;
 import com.iu.s4.board.BoardFilesDTO;
+import com.iu.s4.board.CommentsDTO;
 import com.iu.s4.util.Pager;
 
 @Repository
@@ -19,6 +21,22 @@ public class NoticeDAO implements BoardDAO {
 	
 	private final String NAMESPACE="com.iu.s4.board.notice.NoticeDAO.";
 	
+	public List<CommentsDTO> getCommentList(Map<String, Object> map)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getCommentList",map);
+	}
+	
+	public Long getCommentCount(CommentsDTO commentsDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getCommentCount", commentsDTO);
+	}
+	
+	//BoardDAO 선언하고 오버라이딩 
+	public int setComment(CommentsDTO commentsDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setComment", commentsDTO);
+		
+		
+	}
+	
+	//BoardDAO 선언하고 오버라이딩 
 	public List<BoardFilesDTO> getFiles(BoardDTO boardDTO)throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getFiles", boardDTO);
 	}
@@ -69,6 +87,12 @@ public class NoticeDAO implements BoardDAO {
 		return sqlSession.delete(NAMESPACE+"setDelete", boardDTO);
 	}
 
+	public int setCommentDelete(CommentsDTO commentsDTO)throws Exception{
+		return sqlSession.delete(NAMESPACE+"setCommentDelete", commentsDTO);
+		
+	}
+	
+	
 	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub

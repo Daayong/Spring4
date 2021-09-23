@@ -8,6 +8,10 @@ public class CommentsDTO {
 	private long num; 
 	private String writer;
 	private String contents; 
+	private Date regDate;
+	private String board; 
+	
+	
 	public long getCommentsNum() {
 		return commentsNum;
 	}
@@ -44,8 +48,6 @@ public class CommentsDTO {
 	public void setBoard(String board) {
 		this.board = board;
 	}
-	private Date regDate;
-	private String board; 
 	
 	
 }

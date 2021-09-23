@@ -33,6 +33,36 @@ public class NoticeController {
 		return "notice";		
 	}
 	
+	@GetMapping("getCommentList")
+	public ModelAndView getCommentList(CommentsDTO commentsDTO, Pager pager)throws Exception{
+		ModelAndView mv = new ModelAndView(); 
+		commentsDTO.setBoard("N");
+		List<CommentsDTO> ar=noticeService.getCommentList(commentsDTO,pager);
+		mv.addObject("comments", ar);
+		mv.addObject("pager", pager);
+		mv.setViewName("common/ajaxList");
+		return mv;
+	}
+	
+	
+	
+	//setComment
+	@PostMapping("comment")
+	public ModelAndView setComment(CommentsDTO commentsDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		commentsDTO.setBoard("N");
+		
+		int result = noticeService.setComment(commentsDTO);
+		mv.setViewName("common/ajaxResult");
+		mv.addObject("result", result);
+		return mv; 
+	}
+	
+	
+	
+	
+	
+	
 	@GetMapping("down")
 	public ModelAndView fileDown(BoardFilesDTO boardFilesDTO)throws Exception {
 		ModelAndView mv = new ModelAndView(); 
@@ -41,18 +71,6 @@ public class NoticeController {
 		return mv; 
 	}
 	
-	//setComment
-	@PostMapping("comment")
-	public ModelAndView setComment(CommentsDTO commentsDTO)throws Exception {
-		commentsDTO.setBoard("N");
-		
-		
-		
-		ModelAndView mv = new ModelAndView();
-		
-		
-		return mv;
-	}
 	
 	
 //	@RequestMapping(value="list", method=RequestMethod.GET)
@@ -74,6 +92,8 @@ public class NoticeController {
 		ModelAndView mv = new ModelAndView();
 		boardDTO=noticeService.getSelect(boardDTO);
 		List<BoardFilesDTO> ar=noticeService.getFiles(boardDTO);
+		//List<CommentsDTO> comments = noticeService.getCommentList();
+	//	mv.addObject("comments", comments);
 		//mv.addObject("fileList", ar);
 		mv.addObject("dto", boardDTO);
 		mv.setViewName("board/select");
@@ -114,6 +134,14 @@ public class NoticeController {
 		mv.setViewName("common/result");
 		return mv; 
 	}
+	
+	public int setCommentDelete(CommentsDTO commentsDTO)throws Exception{
+		int result = noticeService.setCommentDelete(commentsDTO);
+		return result;
+	}
+	
+	
+	
 	
 	@GetMapping("update")
 	public ModelAndView setUpdate(BoardDTO boardDTO) throws Exception {

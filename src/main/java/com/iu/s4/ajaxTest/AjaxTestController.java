@@ -11,10 +11,10 @@ public class AjaxTestController {
 	
 	@GetMapping("t1")
 	public ModelAndView t1(Integer num)throws Exception{
+		System.out.println("t1 test");	
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("common/ajaxResult");
-		mv.addObject("name", "DY");
-		System.out.println("t1 test");
+		mv.addObject("result", "DY");
 		return mv;
 	}
 
