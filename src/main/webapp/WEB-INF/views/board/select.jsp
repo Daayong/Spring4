@@ -101,7 +101,7 @@
 		});
 		
 			
-		$("#commentList").on("click", ".up", function() {
+		$("#commentList").on('click', '.up', function() {
 			let contents = $(this).prev().val();
 			let cn = $(this).parent().prev().text().trim();
 			let selector=$(this);
@@ -117,7 +117,7 @@
 						alert('수정 성공');
 						//getCommentList(1);
 						selector.parent().children('div').text(contents);
-						selector.parent().children('div').css('display', 'block');
+						selector.parent().children('div').css('display','block');
 						selector.parent().children('textarea').remove();
 						selector.parent().children('button').remove();
 					}else {
@@ -127,12 +127,7 @@
 				error:function(){
 					alert('수정 실패');
 				}
-				
-				
-				
-				
 			});
-			
 		});
 					
 		

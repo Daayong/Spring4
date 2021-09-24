@@ -139,7 +139,7 @@ public class NoticeController {
 		ModelAndView mv = new ModelAndView();
 		int result = noticeService.setCommentUpdate(commentsDTO);
 		mv.setViewName("common/ajaxResult");
-		mv.addObject("result",commentsDTO);
+		mv.addObject("result",result);
 		return mv; 
 		
 	}
