@@ -124,7 +124,9 @@ public class NoticeService implements BoardService {
 		
 	}
 	
-	
+	public int setCommentUpdate(CommentsDTO commentsDTO)throws Exception{
+		return noticeDAO.setCommentUpdate(commentsDTO);
+	}
 	
 	
 	

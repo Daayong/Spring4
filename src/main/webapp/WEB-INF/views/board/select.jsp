@@ -81,6 +81,63 @@
 	
 	<script type="text/javascript">
 		getCommentList(1);
+		//update
+		$("#commentList").on("click", ".commentUpdate", function() {
+		console.log('update');
+		let num = $(this).attr("data-comment-update");
+		let content= $("#content"+num).text().trim();
+		$("#content"+num).children().css('display','none');
+		let ta = '<textarea class="form-control" cols=""  name="contents" id="contents" rows="6">';
+		ta = ta+content.trim() +'</textarea>';
+		ta=ta+'<button type="button" class="btn btn-primary up">save</button>';
+		ta=ta+'<button type="button" class="btn btn-danger can">cancel</button>';
+		 $("#content"+num).append(ta);
+	});
+		
+		$("#commentList").on("click", ".can", function() {
+			$(this).parent().children('div').css('display','block');
+			$(this).parent().children('textarea').remove();
+			$(this).parent().children('button').remove();
+		});
+		
+			
+		$("#commentList").on("click", ".up", function() {
+			let contents = $(this).prev().val();
+			let cn = $(this).parent().prev().text().trim();
+			let selector=$(this);
+			$.ajax({
+				type:"POST",
+				url: "./commentUpdate",
+				data:{
+					commentsNum:cn,
+					contents:contents
+				},
+				success:function(result){
+					if(result.trim()>0){
+						alert('수정 성공');
+						//getCommentList(1);
+						selector.parent().children('div').text(contents);
+						selector.parent().children('div').css('display', 'block');
+						selector.parent().children('textarea').remove();
+						selector.parent().children('button').remove();
+					}else {
+						alert('수정 실패');
+					}
+				},
+				error:function(){
+					alert('수정 실패');
+				}
+				
+				
+				
+				
+			});
+			
+		});
+					
+		
+		
+		
 		
 		$("#commentList").on("click",".more",function(){
 			//data-comment-pn 값을 출력 
@@ -90,9 +147,29 @@
 		});
 		
 		$("#commentList").on("click",".commentDel",function(){
-			let commentNum=$(this).attr("data-comment-del");
-			console.log(commentNum);
-			//url ./commentDel
+			let commentsNum=$(this).attr("data-comment-del");
+			console.log(commentsNum);
+			$.ajax({
+				type:"POST",
+				url: "./commentDel",
+				data:{
+					commentsNum:commentsNum
+				},
+				success:function(result){
+					result=result.trim();
+					
+					if(result>0){
+						alert("삭제성공");
+						getCommentList(1);
+					}else{
+						alert("삭제실패");
+					}
+				},
+				error:function(){
+					alert('삭제 실패');
+				}
+			});
+			
 		});
 	
 		function getCommentList(pageNumber){

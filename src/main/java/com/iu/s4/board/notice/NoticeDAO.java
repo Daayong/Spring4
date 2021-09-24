@@ -100,7 +100,10 @@ public class NoticeDAO implements BoardDAO {
 	}
 
 	
-	
+	public int setCommentUpdate(CommentsDTO commentsDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setCommentUpdate", commentsDTO);
+		
+	}
 	
 	
 	
