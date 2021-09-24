@@ -25,7 +25,7 @@
 		  
 		  <div class="mb-3">
 		    <label for="contents" class="form-label">CONTENTS</label>
-		    <textarea name="contents" id="contents" value="${dto.contents}" placeholder="Enter Contents"></textarea>
+		    <textarea name="contents" id="contents" placeholder="Enter Contents">${dto.contents}</textarea>
 		  </div>
 		 <input type="hidden" readonly="readonly" name="regDate" value="${dto.regDate}">
 		 <input type="hidden" readonly="readonly" name="hits" value="${dto.hits}">
