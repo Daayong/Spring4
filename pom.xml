@@ -22,6 +22,13 @@
 		    <version>1.4</version>
 		</dependency>
 		
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.12.4</version>
+		</dependency>
+						
 		<!-- mybatis 추가 -->
 		<dependency>
 		    <groupId>org.mybatis</groupId>
